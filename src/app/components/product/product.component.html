@@ -1,0 +1,28 @@
+<div class="py-4 px-6 border rounded flex items-center flex-col mb-2">
+  <img [src]="product.image" [alt]="product.title" class="w-1/6 mb-2">
+  <h2 class="mb-2 text-md text-center">{{product.title}}</h2>
+  <p>
+    Price: <b>{{product.price | currency}}</b>
+  </p>
+
+  <button
+    class="border py-2 px-4 rounded"
+    [ngClass]="{
+      'bg-yellow-400': !collapsed,
+      'bg-blue-400': collapsed
+    }"
+    (click)="collapsedButtonClick()"
+  >
+    {{collapsed ? 'Hide': 'Show '}} details
+  </button>
+
+  <div *ngIf="collapsed">
+    <p>
+      {{product.description}}
+    </p>
+    <p class="mt-5">
+      Rate: <b>{{product.rating.rate | number: '1.2-4'}}</b>
+    </p>
+  </div>
+
+</div>
